@@ -15,7 +15,7 @@ local layouts = {
 }
 
 -- Cambiar el número de ventanas maestras en el layout de mosaico
--- awful.layout.layouts[1].nmaster = 2
+awful.layout.layouts[1].nmaster = 2
 
 -- Función para configurar los layouts en una pantalla
 local function setup(s)

@@ -3,24 +3,16 @@ local awful = require("awful")
 local wibox = require("wibox")
 local gears = require("gears")
 local beautiful = require("beautiful")
+local dpi = require("beautiful.xresources").apply_dpi
 
 -- Cargar widgets desde la carpeta widgets/
 local widgets = require("widgets")
-
--- Widget para mostrar el layout activo
--- local layoutbox = awful.widget.layoutbox {
---     screen = awful.screen.focused(),
---     buttons = {
---         awful.button({}, 1, function() awful.layout.inc(1) end),  -- Click izquierdo: cambiar al siguiente layout
---         awful.button({}, 3, function() awful.layout.inc(-1) end), -- Click derecho: cambiar al layout anterior
---     }
--- }
 
 -- Función para cargar los widgets en la barra
 local function load_widgets()
     -- Crear una barra en cada pantalla
     awful.screen.connect_for_each_screen(function(s)
-        local mywibox = awful.wibar({ position = "top", screen = s })
+        local mywibox = awful.wibar({ position = "top", screen = s , height = dpi(20)})
 
         -- Widget de tags
         local taglist = awful.widget.taglist {
@@ -43,9 +35,9 @@ local function load_widgets()
             },
             { -- Widgets de la derecha
                 layout = wibox.layout.fixed.horizontal,
-                widgets.cpu,
-                widgets.memory,
-                widgets.network,
+                -- widgets.cpu,
+                -- widgets.memory,
+                -- widgets.network,
                 -- layoutbox,  -- Mostrar el layout activo
                 widgets.systray,
                 widgets.calendar,
