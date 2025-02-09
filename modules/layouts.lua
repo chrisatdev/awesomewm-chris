@@ -1,12 +1,13 @@
 -- modules/layouts.lua
 local awful = require("awful")
+local gears = require("gears")
 local beautiful = require("beautiful")
 
 -- Definir los layouts disponibles
 local layouts = {
     awful.layout.suit.tile,        -- Mosaico (tiling)
     awful.layout.suit.floating,    -- Ventanas flotantes
-    -- awful.layout.suit.max,         -- Maximizado
+    awful.layout.suit.max,         -- Maximizado
     -- awful.layout.suit.tile.left,   -- Mosaico a la izquierda
     -- awful.layout.suit.tile.bottom, -- Mosaico en la parte inferior
     -- awful.layout.suit.fair,        -- Distribución equitativa

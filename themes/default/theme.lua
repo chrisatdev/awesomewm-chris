@@ -18,7 +18,7 @@ theme.fg_focus = "#ededed"
 theme.fg_urgent = "#e1c1ee"
 theme.fg_minimize = "#4c4f59"
 
-theme.border_width = dpi(0)
+theme.border_width = dpi(1)
 theme.border_color_normal = theme.bg_normal
 theme.border_color_active = theme.bg_focus
 theme.border_color_marked = theme.bg_normal

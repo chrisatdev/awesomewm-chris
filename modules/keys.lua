@@ -1,6 +1,7 @@
 -- modules/keys.lua
 local awful = require("awful")
 local gears = require("gears")
+local beautiful = require("beautiful")
 
 local modkey   = "Mod4" -- Tecla Super/Windows
 local altkey   = "Mod1"
@@ -211,11 +212,26 @@ for i = 1, 9 do
 	)
 end
 
+local clientbuttons = gears.table.join(
+	awful.button({}, 1, function(c)
+		c:emit_signal("request::activate", "mouse_click", { raise = true })
+	end),
+	awful.button({ modkey }, 1, function(c)
+		c:emit_signal("request::activate", "mouse_click", { raise = true })
+		awful.mouse.client.move(c)
+	end),
+	awful.button({ modkey }, 3, function(c)
+		c:emit_signal("request::activate", "mouse_click", { raise = true })
+		awful.mouse.client.resize(c)
+	end)
+)
+
 -- Asignar key bindings globales
 root.keys(globalkeys)
 
 -- Devolver key bindings para su uso en otros módulos
 return {
     globalkeys = globalkeys,
-    clientkeys = clientkeys
+    clientkeys = clientkeys,
+    clientbuttons = clientbuttons
 }
