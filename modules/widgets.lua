@@ -42,43 +42,41 @@ layout_text_widget:buttons(gears.table.join(
 local spr = wibox.widget.textbox(" ")
 
 -- Función para cargar los widgets en la barra
-local function load_widgets()
+local function load_widgets(s)
     -- Crear una barra en cada pantalla
-    awful.screen.connect_for_each_screen(function(s)
-        local mywibox = awful.wibar({ position = "top", screen = s , height = dpi(20)})
+    local mywibox = awful.wibar({ position = "top", screen = s , height = dpi(20)})
 
-        -- Widget de tags
-        local taglist = awful.widget.taglist {
-            screen = s,
-            filter = awful.widget.taglist.filter.all,
-            buttons = {
-                awful.button({}, 1, function(t) t:view_only() end),  -- Click izquierdo: ver solo el tag
-                awful.button({ modkey }, 1, function(t) if client.focus then client.focus:move_to_tag(t) end end),  -- Mod + Click: mover ventana al tag
-            }
-        }
+    -- Widget de tags
+    local taglist = awful.widget.taglist {
+      screen = s,
+      filter = awful.widget.taglist.filter.all,
+      buttons = {
+        awful.button({}, 1, function(t) t:view_only() end),  -- Click izquierdo: ver solo el tag
+        awful.button({ modkey }, 1, function(t) if client.focus then client.focus:move_to_tag(t) end end),  -- Mod + Click: mover ventana al tag
+      }
+    }
 
-        mywibox:setup {
-            layout = wibox.layout.align.horizontal,
-            { -- Widgets de la izquierda (tags)
-                layout = wibox.layout.fixed.horizontal,
-                taglist,  -- Mostrar tags aquí
-			          spr,
-                layout_text_widget,  -- Mostrar el texto del layout activo
-            },
-            { -- Widgets del centro (opcional)
-                layout = wibox.layout.fixed.horizontal,
-            },
-            { -- Widgets de la derecha
-                layout = wibox.layout.fixed.horizontal,
-                -- widgets.cpu,
-                -- widgets.memory,
-                -- widgets.network,
-                -- layoutbox,  -- Mostrar el layout activo
-                widgets.systray,
-                widgets.calendar,
-            },
-        }
-    end)
+    mywibox:setup {
+        layout = wibox.layout.align.horizontal,
+        { -- Widgets de la izquierda (tags)
+            layout = wibox.layout.fixed.horizontal,
+            taglist,  -- Mostrar tags aquí
+			      spr,
+            layout_text_widget,  -- Mostrar el texto del layout activo
+        },
+        { -- Widgets del centro (opcional)
+            layout = wibox.layout.fixed.horizontal,
+        },
+        { -- Widgets de la derecha
+            layout = wibox.layout.fixed.horizontal,
+            -- widgets.cpu,
+            -- widgets.memory,
+            -- widgets.network,
+            -- layoutbox,  -- Mostrar el layout activo
+            widgets.systray,
+            widgets.calendar,
+        },
+    }
 end
 
 -- Exportar la función load_widgets

@@ -11,20 +11,20 @@ local AUTOSTART_DIR = HOME_DIR .. "/code/bash/awesomewm/"
 local vi_focus = false
 
 -- Cargar configuración de temas
-beautiful.init(gears.filesystem.get_configuration_dir() .. "themes/default/theme.lua")
+beautiful.init(gears.filesystem.get_configuration_dir() .. "themes/light/theme.lua")
 
 -- Cargar módulos
 require("modules.keys")
--- require("modules.tags")
--- require("modules.rules")
--- require("modules.layouts")
-require("modules.widgets").load_widgets()
+require("modules.tags")
+require("modules.rules")
+require("modules.layouts")
 
 -- Inicializar AwesomeWM
 awful.screen.connect_for_each_screen(function(s)
-    -- Configurar tags y layouts para cada pantalla
-    require("modules.tags").setup(s)
-    require("modules.layouts").setup(s)
+  require("modules.widgets").load_widgets(s)
+  -- Configurar tags y layouts para cada pantalla
+  require("modules.tags").setup(s)
+  require("modules.layouts").setup(s)
 end)
 
 -- Aplicar reglas

@@ -11,8 +11,8 @@ local layouts = {
     -- awful.layout.suit.tile.left,   -- Mosaico a la izquierda
     -- awful.layout.suit.tile.bottom, -- Mosaico en la parte inferior
     -- awful.layout.suit.fair,        -- Distribución equitativa
-    awful.layout.suit.spiral,      -- Espiral
-    awful.layout.suit.magnifier    -- Magnificador
+    -- awful.layout.suit.spiral,      -- Espiral
+    -- awful.layout.suit.magnifier    -- Magnificador
 }
 
 -- Cambiar el número de ventanas maestras en el layout de mosaico

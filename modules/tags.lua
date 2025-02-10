@@ -4,11 +4,13 @@ local beautiful = require("beautiful")
 
 local tags = {}
 
+awful.util.tagnames = { "", "", "", "", "" } -- Navegador, Código, Terminal, Sistema, Media
+
 function tags.setup(s)
-    -- Definir tags
-    s.tags = {
-        awful.tag({ " 1 ", " 2 ", " 3 ", " 4 ", " 5 " }, s, awful.layout.layouts[1])
-    }
+	awful.tag(awful.util.tagnames, s, awful.layout.layouts[1])
+
+    -- Hacer los tags clickeables
+	s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, awful.util.taglist_buttons)
 end
 
 return tags
